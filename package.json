@@ -1,0 +1,47 @@
+{
+  "name": "c-users-hp-gemini-tmp-050-d-469-ae-439-d-4484-ba-4-ade-884427-d-3343-ae-7-d-27-d-038-e-92159-bbdb-8364-e-9-fb-1-b-docusaurus-temp",
+  "version": "0.0.0",
+  "private": true,
+  "scripts": {
+    "docusaurus": "npx docusaurus",
+    "start": "npx docusaurus start",
+    "build": "npx docusaurus build",
+    "swizzle": "npx docusaurus swizzle",
+    "deploy": "npx docusaurus deploy",
+    "clear": "npx docusaurus clear",
+    "serve": "npx docusaurus serve",
+    "write-translations": "npx docusaurus write-translations",
+    "write-heading-ids": "npx docusaurus write-heading-ids",
+    "typecheck": "tsc"
+  },
+  "dependencies": {
+    "@docusaurus/core": "3.9.2",
+    "@docusaurus/preset-classic": "3.9.2",
+    "@mdx-js/react": "^3.0.0",
+    "clsx": "^2.0.0",
+    "prism-react-renderer": "^2.3.0",
+    "react": "^19.0.0",
+    "react-dom": "^19.0.0"
+  },
+  "devDependencies": {
+    "@docusaurus/module-type-aliases": "3.9.2",
+    "@docusaurus/tsconfig": "3.9.2",
+    "@docusaurus/types": "3.9.2",
+    "typescript": "~5.6.2"
+  },
+  "browserslist": {
+    "production": [
+      ">0.5%",
+      "not dead",
+      "not op_mini all"
+    ],
+    "development": [
+      "last 3 chrome version",
+      "last 3 firefox version",
+      "last 5 safari version"
+    ]
+  },
+  "engines": {
+    "node": ">=20.0"
+  }
+}
