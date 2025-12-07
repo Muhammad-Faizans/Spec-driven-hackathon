@@ -1,6 +1,6 @@
 import type {ReactNode} from 'react';
 import clsx from 'clsx';
-import Heading from '@theme/Heading';
+import Heading from '../../theme/components/Heading';
 import styles from './styles.module.css';
 
 type FeatureItem = {
@@ -13,7 +13,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: 'Embodied Intelligence: Bridging AI & Reality',
     // TODO: Replace with a thematic SVG/illustration (e.g., a robot interacting with its environment, a brain connected to a physical body)
-    Svg: require('@site/static/img/undraw_docusaurus_mountain.svg').default,
+    Svg: require('../../../static/img/undraw_docusaurus_mountain.svg').default,
     description: (
       <>
         Dive into Physical AI, where digital minds control physical bodies. Master the integration
@@ -24,7 +24,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: 'Digital Twins: Simulate, Design, Deploy',
     // TODO: Replace with a thematic SVG/illustration (e.g., a simulation environment, gears, a cloud representing digital twin)
-    Svg: require('@site/static/img/undraw_docusaurus_tree.svg').default,
+    Svg: require('../../../static/img/undraw_docusaurus_tree.svg').default,
     description: (
       <>
         Harness the power of ROS 2, Gazebo, and NVIDIA Isaac Sim to design,
@@ -35,7 +35,7 @@ const FeatureList: FeatureItem[] = [
   {
     title: 'AI-Robot Brains: Perception, Planning, Action',
     // TODO: Replace with a thematic SVG/illustration (e.g., a robot eye, a thinking process flow, LLM icon)
-    Svg: require('@site/static/img/undraw_docusaurus_react.svg').default,
+    Svg: require('../../../static/img/undraw_docusaurus_react.svg').default,
     description: (
       <>
         Explore NVIDIA Isaac's advanced perception capabilities, VSLAM, and Nav2 for path planning.
