@@ -1,0 +1,337 @@
+/**
+ * CSS files with the .module.css suffix will be treated as CSS modules
+ * and scoped locally.
+ */
+
+/* Hero Section - Professional Modern Design */
+.heroSection {
+  background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 50%, #e2e8f0 100%);
+  padding: 100px 0 80px;
+  position: relative;
+  overflow: hidden;
+}
+
+.heroSection::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(99, 102, 241, 0.1) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(139, 92, 246, 0.1) 0%, transparent 50%);
+  pointer-events: none;
+}
+
+[data-theme='dark'] .heroSection {
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #334155 100%);
+}
+
+[data-theme='dark'] .heroSection::before {
+  background: 
+    radial-gradient(circle at 20% 50%, rgba(129, 140, 248, 0.15) 0%, transparent 50%),
+    radial-gradient(circle at 80% 80%, rgba(167, 139, 250, 0.15) 0%, transparent 50%);
+}
+
+.heroContainer {
+  max-width: 1280px;
+  margin: 0 auto;
+  padding: 0 32px;
+  position: relative;
+  z-index: 1;
+}
+
+.heroContent {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 80px;
+  align-items: center;
+}
+
+.heroText {
+  display: flex;
+  flex-direction: column;
+  gap: 24px;
+}
+
+.heroBadge {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  color: #6366f1;
+  padding: 10px 20px;
+  border-radius: 50px;
+  font-size: 14px;
+  font-weight: 600;
+  width: fit-content;
+  border: 1px solid rgba(99, 102, 241, 0.2);
+  backdrop-filter: blur(10px);
+  box-shadow: 0 4px 6px -1px rgba(99, 102, 241, 0.1);
+  transition: all 0.3s ease;
+}
+
+.heroBadge:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 12px -2px rgba(99, 102, 241, 0.2);
+}
+
+[data-theme='dark'] .heroBadge {
+  background: linear-gradient(135deg, rgba(129, 140, 248, 0.15) 0%, rgba(167, 139, 250, 0.15) 100%);
+  color: #a5b4fc;
+  border-color: rgba(129, 140, 248, 0.3);
+}
+
+.heroTitle {
+  font-size: 56px;
+  font-weight: 800;
+  line-height: 1.1;
+  background: linear-gradient(135deg, #0f172a 0%, #1e293b 50%, #475569 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+  margin: 0;
+  letter-spacing: -0.02em;
+}
+
+[data-theme='dark'] .heroTitle {
+  background: linear-gradient(135deg, #f1f5f9 0%, #e2e8f0 50%, #cbd5e1 100%);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.heroSubtitle {
+  font-size: 22px;
+  font-weight: 600;
+  color: #6366f1;
+  margin: 0;
+  line-height: 1.4;
+  letter-spacing: -0.01em;
+}
+
+[data-theme='dark'] .heroSubtitle {
+  color: #a5b4fc;
+}
+
+.heroDescription {
+  font-size: 18px;
+  color: #64748b;
+  line-height: 1.7;
+  margin: 0;
+  max-width: 600px;
+}
+
+[data-theme='dark'] .heroDescription {
+  color: #94a3b8;
+}
+
+.heroButtons {
+  display: flex;
+  gap: 16px;
+  margin-top: 8px;
+  flex-wrap: wrap;
+}
+
+.primaryButton {
+  background: linear-gradient(135deg, #6366f1 0%, #8b5cf6 100%);
+  border: none;
+  color: white;
+  box-shadow: 0 4px 14px 0 rgba(99, 102, 241, 0.4);
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 600;
+}
+
+.primaryButton:hover {
+  background: linear-gradient(135deg, #4f46e5 0%, #7c3aed 100%);
+  transform: translateY(-2px);
+  box-shadow: 0 8px 20px 0 rgba(99, 102, 241, 0.5);
+}
+
+.secondaryButton {
+  border: 2px solid #6366f1;
+  color: #6366f1;
+  background-color: transparent;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  font-weight: 600;
+  backdrop-filter: blur(10px);
+}
+
+.secondaryButton:hover {
+  background: linear-gradient(135deg, rgba(99, 102, 241, 0.1) 0%, rgba(139, 92, 246, 0.1) 100%);
+  border-color: #8b5cf6;
+  color: #8b5cf6;
+  transform: translateY(-2px);
+  box-shadow: 0 4px 12px rgba(99, 102, 241, 0.2);
+}
+
+[data-theme='dark'] .secondaryButton {
+  border-color: #a5b4fc;
+  color: #a5b4fc;
+}
+
+[data-theme='dark'] .secondaryButton:hover {
+  background: linear-gradient(135deg, rgba(129, 140, 248, 0.15) 0%, rgba(167, 139, 250, 0.15) 100%);
+  border-color: #c7d2fe;
+  color: #c7d2fe;
+}
+
+/* Hero Visual Cards - Modern Glassmorphism Design */
+.heroVisual {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.heroCard {
+  background: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(20px);
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  border-radius: 20px;
+  padding: 28px;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05), 0 2px 4px -1px rgba(0, 0, 0, 0.03);
+  position: relative;
+  overflow: hidden;
+}
+
+.heroCard::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 3px;
+  background: linear-gradient(90deg, #6366f1 0%, #8b5cf6 50%, #a855f7 100%);
+  transform: scaleX(0);
+  transform-origin: left;
+  transition: transform 0.4s ease;
+}
+
+.heroCard:hover {
+  border-color: rgba(99, 102, 241, 0.3);
+  box-shadow: 0 20px 25px -5px rgba(99, 102, 241, 0.2), 0 10px 10px -5px rgba(99, 102, 241, 0.1);
+  transform: translateY(-6px);
+  background: rgba(255, 255, 255, 0.95);
+}
+
+.heroCard:hover::before {
+  transform: scaleX(1);
+}
+
+[data-theme='dark'] .heroCard {
+  background: rgba(15, 23, 42, 0.6);
+  border-color: rgba(129, 140, 248, 0.2);
+}
+
+[data-theme='dark'] .heroCard:hover {
+  background: rgba(15, 23, 42, 0.8);
+  border-color: rgba(129, 140, 248, 0.4);
+}
+
+.cardIcon {
+  font-size: 40px;
+  margin-bottom: 16px;
+  display: inline-block;
+  transition: transform 0.3s ease;
+}
+
+.heroCard:hover .cardIcon {
+  transform: scale(1.1) rotate(5deg);
+}
+
+.heroCard h3 {
+  font-size: 20px;
+  font-weight: 700;
+  color: #0f172a;
+  margin: 0 0 10px 0;
+  letter-spacing: -0.01em;
+}
+
+[data-theme='dark'] .heroCard h3 {
+  color: #f1f5f9;
+}
+
+.heroCard p {
+  font-size: 15px;
+  color: #64748b;
+  margin: 0;
+  line-height: 1.6;
+}
+
+[data-theme='dark'] .heroCard p {
+  color: #cbd5e1;
+}
+
+/* Responsive Design */
+@media screen and (max-width: 996px) {
+  .heroSection {
+    padding: 80px 0 60px;
+  }
+
+  .heroContainer {
+    padding: 0 24px;
+  }
+
+  .heroContent {
+    grid-template-columns: 1fr;
+    gap: 50px;
+  }
+
+  .heroTitle {
+    font-size: 42px;
+  }
+
+  .heroSubtitle {
+    font-size: 20px;
+  }
+
+  .heroDescription {
+    font-size: 17px;
+  }
+
+  .heroButtons {
+    flex-direction: row;
+  }
+
+  .heroButtons a {
+    flex: 1;
+    min-width: 140px;
+    text-align: center;
+  }
+}
+
+@media screen and (max-width: 600px) {
+  .heroSection {
+    padding: 60px 0 40px;
+  }
+
+  .heroContainer {
+    padding: 0 20px;
+  }
+
+  .heroTitle {
+    font-size: 32px;
+  }
+
+  .heroSubtitle {
+    font-size: 18px;
+  }
+
+  .heroDescription {
+    font-size: 16px;
+  }
+
+  .heroButtons {
+    flex-direction: column;
+  }
+
+  .heroButtons a {
+    width: 100%;
+  }
+
+  .heroCard {
+    padding: 20px;
+  }
+}
