@@ -28,12 +28,10 @@ const Chatbot = ({ selectedText }) => {
     setInput('');
 
     try {
-      // Backend API URL
+      // Backend API URL - using the correct endpoint
       const API_BASE_URL = 'http://127.0.0.1:8000';
-      const endpoint = isSelectedTextQuery ? '/query/selected-text' : '/query/general';
-      const payload = isSelectedTextQuery
-        ? { question: queryText, selected_text: selectedText }
-        : { question: queryText };
+      const endpoint = '/chat'; // Using the correct chat endpoint
+      const payload = { query: queryText }; // Backend expects 'query' field
 
       const response = await fetch(`${API_BASE_URL}${endpoint}`, {
         method: 'POST',
@@ -55,7 +53,7 @@ const Chatbot = ({ selectedText }) => {
       }
 
       const data = await response.json();
-      const botMessage = { text: data.answer, sender: 'bot' };
+      const botMessage = { text: data.response, sender: 'bot' }; // Backend returns 'response' field
       setMessages(prevMessages => [...prevMessages, botMessage]);
 
     } catch (error) {

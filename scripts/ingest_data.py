@@ -1,5 +1,6 @@
 import os
 import uuid
+import google.generativeai as genai
 
 from sqlalchemy import create_engine
 from sqlalchemy.orm import sessionmaker
@@ -7,18 +8,17 @@ from sqlalchemy.orm import sessionmaker
 from backend.src.schemas import ContentChunk
 from backend.src.database import SessionLocal, engine as db_engine # Assuming engine is exported from database.py
 from qdrant_client import QdrantClient, models
-from openai import OpenAI
 
 # --- Configuration ---
 # Load from environment variables
-OPENAI_API_KEY = os.getenv("OPENAI_API_KEY")
+GOOGLE_API_KEY = os.getenv("GOOGLE_API_KEY")
 QDRANT_API_KEY = os.getenv("QDRANT_API_KEY")
 QDRANT_HOST = os.getenv("QDRANT_HOST", "localhost")
 QDRANT_PORT = int(os.getenv("QDRANT_PORT", 6333))
 QDRANT_COLLECTION_NAME = "book_content_chunks"
 
-# OpenAI client initialization
-client_openai = OpenAI(api_key=OPENAI_API_KEY)
+# Configure Google Generative AI
+genai.configure(api_key=GOOGLE_API_KEY)
 
 # Qdrant client initialization
 client_qdrant = QdrantClient(host=QDRANT_HOST, port=QDRANT_PORT, api_key=QDRANT_API_KEY)
@@ -30,17 +30,22 @@ def ensure_qdrant_collection():
         print(f"Collection '{QDRANT_COLLECTION_NAME}' already exists.")
     except Exception as e:
         print(f"Collection '{QDRANT_COLLECTION_NAME}' not found, creating...")
+        # Gemini embeddings are typically 768 dimensions
         client_qdrant.create_collection(
             collection_name=QDRANT_COLLECTION_NAME,
-            vectors_config=models.VectorParams(size=1536, distance=models.Distance.COSINE) # OpenAI embeddings are typically 1536 dimensions
+            vectors_config=models.VectorParams(size=768, distance=models.Distance.COSINE)
         )
         print(f"Collection '{QDRANT_COLLECTION_NAME}' created.")
 
 # Function to generate embeddings
 def get_embedding(text):
     try:
-        response = client_openai.embeddings.create(input=text, model="text-embedding-ada-002")
-        return response.data[0].embedding
+        result = genai.embed_content(
+            model="models/embedding-001",
+            content=text,
+            task_type="semantic_similarity"
+        )
+        return result['embedding']
     except Exception as e:
         print(f"Error generating embedding: {e}")
         return None

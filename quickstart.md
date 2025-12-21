@@ -7,7 +7,7 @@
 1.  **Prerequisites**:
     -   Python 3.11+ installed
     -   `requirements.txt` file with all necessary dependencies
-    -   Environment variables configured (`OPENAI_API_KEY`, `QDRANT_API_KEY`, `QDRANT_HOST`, `DATABASE_URL`)
+    -   Environment variables configured (`GOOGLE_API_KEY`, `QDRANT_API_KEY`, `QDRANT_HOST`, `DATABASE_URL`)
 
 2.  **Installation**:
     ```bash

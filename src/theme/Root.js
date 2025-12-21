@@ -1,38 +1,43 @@
-import React from 'react';
-import Chatbot from './components/Chatbot'; // Adjust path as necessary
+import React, { useState } from 'react';
+import { useLocation } from '@docusaurus/router';
+import ChatWidget from './components/ChatWidget';
+import LoginModal from './components/LoginModal';
+import { AuthProvider, useAuth } from './components/AuthContext';
+import './CustomRoot.css';
 
-export default function Root({ children, ...props }) {
-  // The selectedText is managed by the parent (Root component) which listens for selection events.
-  // We need to get the selected text from the window when the chatbot is active.
-  const [selectedText, setSelectedText] = React.useState('');
+// Separate component to handle auth context within the provider
+const RootWithAuth = ({ children }) => {
+  const location = useLocation();
+  const [isLoginModalOpen, setIsLoginModalOpen] = useState(false);
+  const { loading } = useAuth();
 
-  React.useEffect(() => {
-    console.log('Root component mounted - Chatbot should be visible');
-  }, []);
+  // Don't show chat widget on auth pages
+  const isAuthPage = location.pathname.includes('/login') || location.pathname.includes('/register');
 
-  const handleTextSelection = React.useCallback(() => {
-    const selection = window.getSelection();
-    if (selection && selection.toString().trim().length > 0) {
-      setSelectedText(selection.toString());
-    } else {
-      setSelectedText('');
-    }
-  }, []);
-
-  // Add event listener on mount to capture text selections
-  React.useEffect(() => {
-    document.addEventListener('mouseup', handleTextSelection);
-    // Clean up listener on unmount
-    return () => {
-      document.removeEventListener('mouseup', handleTextSelection);
-    };
-  }, [handleTextSelection]);
+  if (loading) {
+    return <div>Loading...</div>;
+  }
 
   return (
     <>
       {children}
-      {/* Chatbot UI - now handles its own positioning */}
-      <Chatbot selectedText={selectedText} />
+      {!isAuthPage && <ChatWidget />}
+      <LoginModal
+        isOpen={isLoginModalOpen}
+        onClose={() => setIsLoginModalOpen(false)}
+      />
     </>
   );
 };
+
+const CustomRoot = ({ children }) => {
+  return (
+    <AuthProvider>
+      <RootWithAuth>
+        {children}
+      </RootWithAuth>
+    </AuthProvider>
+  );
+};
+
+export default CustomRoot;

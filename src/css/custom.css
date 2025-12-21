@@ -194,3 +194,19 @@ table thead {
 * {
   transition: background-color 0.3s ease, border-color 0.3s ease, color 0.3s ease;
 }
+
+/* Translation Header in Course Content */
+.translation-header {
+  margin-bottom: 1.5rem;
+  padding: 1rem;
+  background: var(--ifm-background-surface-color);
+  border-radius: 8px;
+  border: 1px solid rgba(99, 102, 241, 0.1);
+  display: flex;
+  justify-content: flex-end;
+}
+
+[data-theme='dark'] .translation-header {
+  background: var(--ifm-background-surface-color);
+  border-color: rgba(129, 140, 248, 0.1);
+}

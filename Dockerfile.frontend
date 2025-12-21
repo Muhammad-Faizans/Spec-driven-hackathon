@@ -1,0 +1,22 @@
+# Frontend Dockerfile for Docusaurus
+FROM node:18
+
+WORKDIR /app
+
+# Copy package files
+COPY package.json yarn.lock ./
+
+# Install dependencies
+RUN yarn install
+
+# Copy the rest of the application
+COPY . .
+
+# Build the Docusaurus site
+RUN yarn build
+
+# Expose port
+EXPOSE 3000
+
+# Serve the built site
+CMD ["yarn", "serve", "-p", "3000", "--host", "0.0.0.0"]

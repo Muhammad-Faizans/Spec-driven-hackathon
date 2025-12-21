@@ -9,14 +9,14 @@ module.exports = {
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
-  favicon: 'img/favicon.ico',
-  organizationName: 'your-org',
-  projectName: 'physical-ai-robots',
+  favicon: 'static/img/favicon.ico',
+  organizationName: 'Muhammad Faizan',
+  projectName: 'Spec Driven Hackathon',
 
   theme: {
-    customCss: require.resolve('./src/css/custom.css'),
+    customCss: require.resolve('src/css/custom.css'),
     // Correctly pointing to the Root component within the Docusaurus src directory
-    root: path.resolve(__dirname, './src/theme/Root.js'),
+    root: path.resolve(__dirname, 'src/theme/Root.js'),
   },
 
   presets: [
@@ -28,13 +28,13 @@ module.exports = {
           sidebarPath: require.resolve('./sidebars.js'),
           // Please change this to your repo.
           editUrl:
-            'https://github.com/your-org/physical-ai-robots/edit/main/docs/',
+            'https://github.com/Muhammad-Faizans/Spec-driven-hackathon/edit/main/docs/',
         },
         blog: {
           showReadingTime: true,
           // Please change this to your repo.
           editUrl:
-            'https://github.com/your-org/physical-ai-robots/edit/main/blog/',
+            'https://github.com/Muhammad-Faizans/Spec-driven-hackathon/edit/main/blog/',
         },
         theme: {
           customCss: require.resolve('./src/css/custom.css'),

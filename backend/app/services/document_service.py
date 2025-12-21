@@ -1,0 +1,169 @@
+"""
+Document Service for indexing documents into Qdrant
+"""
+
+import os
+import glob
+import markdown
+import re
+from qdrant_client import QdrantClient
+from qdrant_client.models import VectorParams, Distance, PointStruct
+import cohere
+from config import (
+    COLLECTION_NAME, COHERE_API_KEY, EMBED_MODEL,
+    QDRANT_URL, QDRANT_API_KEY, CHUNK_MAX_CHARS
+)
+
+
+class DocumentService:
+    def __init__(self):
+        # Initialize clients
+        self.cohere_client = cohere.Client(COHERE_API_KEY)
+        
+        # Connect to Qdrant Cloud
+        self.qdrant = QdrantClient(
+            url=QDRANT_URL,
+            api_key=QDRANT_API_KEY,
+        )
+        
+        # Create collection if it doesn't exist
+        self.create_collection()
+
+    def extract_text_from_md_file(self, file_path):
+        """Extract text content from markdown files, excluding frontmatter"""
+        with open(file_path, 'r', encoding='utf-8') as f:
+            content = f.read()
+
+        # Remove frontmatter (content between --- and --- at the beginning)
+        content = re.sub(r'^---\n.*?\n---\n', '', content, flags=re.DOTALL)
+
+        # Convert markdown to plain text
+        html = markdown.markdown(content)
+
+        # Remove HTML tags to get plain text
+        text = re.sub(r'<[^>]+>', '', html)
+
+        return text
+
+    def chunk_text(self, text, max_chars=CHUNK_MAX_CHARS):
+        """Function to chunk documents"""
+        chunks = []
+        while len(text) > max_chars:
+            # Find a good breaking point (sentence or paragraph boundary)
+            split_pos = -1
+            for pos in [text.rfind('. ', max_chars//2, max_chars),
+                        text.rfind('! ', max_chars//2, max_chars),
+                        text.rfind('? ', max_chars//2, max_chars),
+                        text.rfind('\n', max_chars//2, max_chars),
+                        text.rfind(' ', max_chars//2, max_chars)]:
+                if pos != -1:
+                    split_pos = pos + 1
+                    break
+
+            if split_pos == -1:  # If no good break found, just split at max_chars
+                split_pos = max_chars
+
+            chunks.append(text[:split_pos])
+            text = text[split_pos:]
+
+        if text:  # Add the remaining text if any
+            chunks.append(text)
+
+        return chunks
+
+    def embed(self, text):
+        """Create embedding function"""
+        response = self.cohere_client.embed(
+            model=EMBED_MODEL,
+            input_type="search_document",  # Use search_document for documents
+            texts=[text],
+        )
+        return response.embeddings[0]  # Return the first embedding
+
+    def create_collection(self):
+        """Create collection function"""
+        print("\nCreating Qdrant collection...")
+        try:
+            self.qdrant.recreate_collection(
+                collection_name=COLLECTION_NAME,
+                vectors_config=VectorParams(
+                    size=1024,        # Cohere embed-english-v3.0 dimension
+                    distance=Distance.COSINE
+                )
+            )
+            print("Qdrant collection created successfully!")
+        except Exception as e:
+            print(f"Error creating collection: {e}")
+
+    def save_chunk_to_qdrant(self, chunk, chunk_id, source_file):
+        """Function to save chunk to Qdrant"""
+        vector = self.embed(chunk)
+
+        self.qdrant.upsert(
+            collection_name=COLLECTION_NAME,
+            points=[
+                PointStruct(
+                    id=chunk_id,
+                    vector=vector,
+                    payload={
+                        "source_file": source_file,
+                        "text": chunk,
+                        "chunk_id": chunk_id
+                    }
+                )
+            ]
+        )
+
+    def index_file(self, file_path, global_id):
+        """Index a single file"""
+        print(f"\nProcessing: {file_path}")
+
+        try:
+            text = self.extract_text_from_md_file(file_path)
+
+            if not text.strip():
+                print(f"  WARNING: No text extracted from {file_path}")
+                return global_id
+
+            print(f"  Extracted text length: {len(text)} characters")
+
+            chunks = self.chunk_text(text, CHUNK_MAX_CHARS)
+            print(f"  Split into {len(chunks)} chunks")
+
+            for i, chunk in enumerate(chunks):
+                self.save_chunk_to_qdrant(chunk, global_id, file_path)
+                print(f"  Saved chunk {global_id} ({len(chunk)} chars)")
+                global_id += 1
+
+        except Exception as e:
+            print(f"  ERROR processing {file_path}: {e}")
+            
+        return global_id
+
+    def index_directory(self, docs_path):
+        """Index all markdown files from the given directory"""
+        md_files = glob.glob(os.path.join(docs_path, '**', '*.md'), recursive=True)
+
+        print(f"Found {len(md_files)} markdown files in docs directory")
+        for file in md_files:
+            print(f" - {file}")
+
+        global_id = 1
+
+        for file_path in md_files:
+            global_id = self.index_file(file_path, global_id)
+
+        total_chunks = global_id - 1
+        print(f"\nIndexing completed successfully!")
+        print(f"Total chunks stored: {total_chunks}")
+
+        # Verify the collection exists and show basic stats
+        try:
+            collection_info = self.qdrant.get_collection(collection_name=COLLECTION_NAME)
+            # Access point_count using dictionary-style access for compatibility
+            point_count = collection_info.points_count if hasattr(collection_info, 'points_count') else collection_info.get('points_count', 0) if isinstance(collection_info, dict) else 0
+            print(f"Collection '{COLLECTION_NAME}' now has {point_count} vectors")
+        except Exception as e:
+            print(f"Could not verify collection stats: {e}")
+
+        return total_chunks

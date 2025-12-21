@@ -1,19 +1,78 @@
-facebook:
-  label: Facebook
-  permalink: /facebook
-  description: Facebook tag description
+faizan:
+  label: Muhammad Faizan
+  permalink: /tags/muhammad-faizan
+  description: >
+    Articles, tutorials, and long-form writings by Muhammad Faizan focusing on
+    Full Stack Development, Agentic AI, Robotics Engineering, ROS 2, Retrieval-
+    Augmented Generation (RAG), backend systems with Python and FastAPI, and
+    modern frontend engineering using Next.js and Tailwind CSS.
 
-hello:
-  label: Hello
-  permalink: /hello
-  description: Hello tag description
+agentic-ai:
+  label: Agentic AI
+  permalink: /tags/agentic-ai
+  description: >
+    Content covering autonomous agents, reasoning systems, planning workflows,
+    multi-agent architectures, and real-world applications of agentic AI.
 
-docusaurus:
-  label: Docusaurus
-  permalink: /docusaurus
-  description: Docusaurus tag description
+robotics:
+  label: Robotics
+  permalink: /tags/robotics
+  description: >
+    Posts related to robotics engineering, ROS 2, robot middleware, simulation,
+    digital twins, and intelligent physical systems.
 
-hola:
-  label: Hola
-  permalink: /hola
-  description: Hola tag description
+ros2:
+  label: ROS 2
+  permalink: /tags/ros2
+  description: >
+    Deep dives into ROS 2 concepts including nodes, topics, services, URDF,
+    rclpy, and integration with AI-driven systems.
+
+rag:
+  label: Retrieval-Augmented Generation
+  permalink: /tags/rag
+  description: >
+    Articles on building RAG systems using vector databases, embeddings,
+    knowledge retrieval, and AI-powered question answering.
+
+fastapi:
+  label: FastAPI
+  permalink: /tags/fastapi
+  description: >
+    Tutorials and guides on building high-performance backend APIs with
+    FastAPI, Python, and PostgreSQL.
+
+backend:
+  label: Backend Development
+  permalink: /tags/backend
+  description: >
+    Topics covering backend architecture, authentication, databases,
+    scalability, and cloud-native systems.
+
+frontend:
+  label: Frontend Engineering
+  permalink: /tags/frontend
+  description: >
+    Content focused on modern frontend development with React, Next.js,
+    Tailwind CSS, and professional UI/UX practices.
+
+fullstack:
+  label: Full Stack Development
+  permalink: /tags/fullstack
+  description: >
+    End-to-end application development covering frontend, backend,
+    infrastructure, and AI integration.
+
+physical-ai:
+  label: Physical AI
+  permalink: /tags/physical-ai
+  description: >
+    Exploration of intelligent machines that can perceive, reason, and act
+    safely in real-world environments.
+
+learning-by-building:
+  label: Learning by Building
+  permalink: /tags/learning-by-building
+  description: >
+    Practical, project-driven learning approaches focused on building real
+    applications and systems to master advanced engineering skills.

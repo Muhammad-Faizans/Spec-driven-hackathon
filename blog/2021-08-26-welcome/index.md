@@ -1,29 +1,53 @@
 ---
 slug: welcome
-title: Welcome
-authors: [slorber, yangshun]
-tags: [facebook, hello, docusaurus]
+title: Welcome to My Engineering Journal
+authors: [faizan]
+tags:
+  - fullstack
+  - agentic-ai
+  - robotics
+  - ros2
+  - rag
+  - learning-by-building
 ---
 
-[Docusaurus blogging features](https://docusaurus.io/docs/blog) are powered by the [blog plugin](https://docusaurus.io/docs/api/plugins/@docusaurus/plugin-content-blog).
+Welcome 👋  
+This blog is my personal engineering journal—a place where I document what I **build, break, fix, and learn** across **Full Stack Development, Agentic AI, and Robotics**.
 
-Here are a few tips you might find useful.
+I believe the fastest way to learn advanced engineering is **by building real systems**, not just reading theory. Everything you’ll find here is grounded in practical projects, production-style architectures, and lessons learned the hard way.
+
+## What You’ll Find Here
+
+- **Agentic AI Systems**  
+  Autonomous agents, reasoning workflows, RAG pipelines, and real-world AI integration.
+
+- **Robotics & ROS 2**  
+  Nodes, topics, services, URDF, simulations, digital twins, and AI-to-robot bridges.
+
+- **Backend Engineering**  
+  FastAPI, PostgreSQL, authentication, scalable APIs, and clean system design.
+
+- **Frontend & Full Stack Work**  
+  Next.js, Tailwind CSS, UI/UX decisions, and end-to-end product development.
+
+- **Learning by Building**  
+  Step-by-step project breakdowns designed to help beginners grow into advanced engineers.
 
 <!-- truncate -->
 
-Simply add Markdown files (or folders) to the `blog` directory.
+## Why This Blog Exists
 
-Regular blog authors can be added to `authors.yml`.
+Most tutorials stop at *“it works”*.  
+This blog goes further—focusing on **why things are built a certain way**, how systems evolve, and how web, AI, and robotics intersect in real products.
 
-The blog post date can be extracted from filenames, such as:
+My long-term goal is to contribute toward **Physical AI**—intelligent systems that can perceive, reason, and safely act in the real world—while sharing everything I learn along the journey.
 
-- `2019-05-30-welcome.md`
-- `2019-05-30-welcome/index.md`
+## How to Use This Blog
 
-A blog post folder can be convenient to co-locate blog post images:
+- Browse by **tags** to follow a specific topic
+- Read chronologically to see how projects evolve
+- Treat posts as **building blocks**, not isolated tutorials
 
-![Docusaurus Plushie](./docusaurus-plushie-banner.jpeg)
+If you’re learning backend, AI, robotics, or full stack engineering and want content that’s practical, honest, and system-focused—you’re in the right place.
 
-The blog supports tags as well!
-
-**And if you don't want a blog**: just delete this directory, and use `blog: false` in your Docusaurus config.
+Let’s build 🚀

@@ -1,24 +1,58 @@
 ---
 slug: mdx-blog-post
-title: MDX Blog Post
-authors: [slorber]
-tags: [docusaurus]
+title: Building Interactive Engineering Blogs with MDX
+authors: [faizan]
+tags:
+  - docusaurus
+  - mdx
+  - learning-by-building
+  - fullstack
 ---
 
-Blog posts support [Docusaurus Markdown features](https://docusaurus.io/docs/markdown-features), such as [MDX](https://mdxjs.com/).
+One of the most powerful features of Docusaurus is its support for
+[Markdown](https://docusaurus.io/docs/markdown-features) **combined with MDX**.
+MDX allows you to blend documentation, blogging, and **real interactive components**
+in a single post.
+
+This makes it perfect for engineering blogs—especially when explaining systems,
+workflows, or concepts that benefit from interaction.
 
 :::tip
 
-Use the power of React to create interactive blog posts.
+MDX lets you think beyond static text.  
+You can **teach by interaction**, not just explanation.
 
 :::
 
 {/* truncate */}
 
-For example, use JSX to create an interactive button:
+## Why I Use MDX for Technical Writing
 
-```js
-<button onClick={() => alert('button clicked!')}>Click me!</button>
-```
+Traditional blogs are great for storytelling, but engineering often requires:
+- Interactive examples
+- Live demos
+- Embedded components
+- Visual feedback
 
-<button onClick={() => alert('button clicked!')}>Click me!</button>
+MDX allows me to bring **frontend engineering practices directly into documentation**
+while keeping everything version-controlled and developer-friendly.
+
+## Example: Interactive UI Inside a Blog Post
+
+Below is a simple interactive button written directly inside this blog post using JSX:
+
+```jsx
+<button
+  onClick={() => alert('You clicked an interactive MDX button!')}
+  style={{
+    padding: '10px 16px',
+    borderRadius: '8px',
+    background: '#2563eb',
+    color: 'white',
+    border: 'none',
+    cursor: 'pointer',
+    fontWeight: '600',
+  }}
+>
+  Click me
+</button>

@@ -1,25 +1,98 @@
-yangshun:
-  name: Yangshun Tay
-  title: Ex-Meta Staff Engineer, Co-founder GreatFrontEnd
-  url: https://linkedin.com/in/yangshun
-  image_url: https://github.com/yangshun.png
+faizan:
+  name: Muhammad Faizan
+  title: Full Stack Developer & Certified Agentic AI and Robotics Engineer
   page: true
-  socials:
-    x: yangshunz
-    linkedin: yangshun
-    github: yangshun
-    newsletter: https://www.greatfrontend.com
+  image_url: https://avatars.githubusercontent.com/u/your-github-username
+  url: https://linkedin.com/in/your-linkedin-username
+  location: Pakistan
+  tagline: "Building intelligent, scalable systems at the intersection of Web, AI, and Robotics"
 
-slorber:
-  name: Sébastien Lorber
-  title: Docusaurus maintainer
-  url: https://sebastienlorber.com
-  image_url: https://github.com/slorber.png
-  page:
-    # customize the url of the author page at /blog/authors/<permalink>
-    permalink: '/all-sebastien-lorber-articles'
+  bio: |
+    Muhammad Faizan is a Full Stack Developer and Certified Agentic AI & Robotics Engineer
+    with a strong passion for building intelligent, real-world software systems that combine
+    modern web technologies with artificial intelligence and robotics.
+
+    He began his journey in software development with frontend engineering, mastering
+    HTML, CSS, JavaScript, and responsive design principles. Over time, he transitioned
+    into modern frameworks such as React, Next.js, and Tailwind CSS, focusing heavily on
+    clean UI, professional design systems, and seamless user experiences.
+
+    As his understanding of systems deepened, Faizan moved toward backend development,
+    where he specialized in Python-based architectures using FastAPI, PostgreSQL,
+    Firebase, and cloud-native patterns. He emphasizes scalable APIs, secure authentication,
+    clean database design, and production-ready deployment workflows.
+
+    Faizan’s work later evolved into Agentic AI and Robotics Engineering, where he actively
+    explores autonomous agents, Retrieval-Augmented Generation (RAG) systems, ROS 2,
+    digital twins, and simulation-based development. His focus lies in building systems
+    that can reason, plan, and act autonomously while remaining grounded in real-world
+    constraints.
+
+    He has developed multiple advanced projects, including AI-powered chatbots,
+    RAG-based knowledge systems for books and documentation, full-featured e-commerce
+    platforms, and interactive learning tools. His engineering philosophy prioritizes
+    long-term maintainability, modular design, and practical usability over short-lived
+    prototypes.
+
+    Faizan strongly believes in learning by building and teaching through documentation.
+    He structures his projects and content to help beginners grow into advanced engineers,
+    especially those aiming to transition into backend, AI, and robotics-focused roles.
+
+    His long-term vision is to contribute to Physical AI — intelligent machines that can
+    safely perceive, reason, and interact with the real world — while continuing to build
+    high-quality software products that make advanced technology accessible and impactful.
+
+  experience:
+    - role: Full Stack Developer
+      focus: Frontend, Backend, Cloud Systems
+      description: |
+        Designs and develops end-to-end applications using Next.js, Tailwind CSS,
+        FastAPI, PostgreSQL, Firebase, and modern deployment pipelines with a strong
+        emphasis on performance and UI/UX quality.
+
+    - role: Agentic AI & Robotics Engineer
+      focus: Autonomous Agents, RAG, ROS 2
+      description: |
+        Builds intelligent agent-based systems integrating AI reasoning with robotics
+        middleware, simulations, and real-world system constraints.
+
+  skills:
+    frontend:
+      - HTML
+      - CSS
+      - JavaScript
+      - React
+      - Next.js
+      - Tailwind CSS
+    backend:
+      - Python
+      - FastAPI
+      - PostgreSQL
+      - Firebase
+      - REST APIs
+      - Authentication Systems
+    ai_and_robotics:
+      - Agentic AI
+      - Retrieval-Augmented Generation (RAG)
+      - ROS 2
+      - Digital Twins
+      - Simulation (Gazebo, Unity)
+    tools:
+      - Git & GitHub
+      - Docker
+      - Linux
+      - Vercel
+      - Firebase Console
+
+  interests:
+    - Agentic AI systems
+    - Robotics middleware and simulation
+    - Backend architecture and scalability
+    - AI-powered developer tools
+    - Physical AI and autonomous systems
+
   socials:
-    x: sebastienlorber
-    linkedin: sebastienlorber
-    github: slorber
-    newsletter: https://thisweekinreact.com
+    github: Muhammad-Faizans
+    linkedin: muhammadfaizan-giaic
+    x: Faizan289787
+    email: faizan00289787@gmail.com

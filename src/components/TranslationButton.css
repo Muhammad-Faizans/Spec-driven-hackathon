@@ -1,0 +1,96 @@
+.translation-container {
+  margin: 20px 0;
+}
+
+.translation-controls {
+  margin-bottom: 15px;
+}
+
+.translate-btn {
+  background: #10b981;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+}
+
+.translate-btn:hover:not(:disabled) {
+  background: #059669;
+}
+
+.translate-btn:disabled {
+  background: #9ca3af;
+  cursor: not-allowed;
+}
+
+.translate-btn.loading {
+  background: #f3f4f6;
+  color: #6b7280;
+}
+
+.spinner {
+  width: 16px;
+  height: 16px;
+  border: 2px solid #ffffff;
+  border-top: 2px solid transparent;
+  border-radius: 50%;
+  animation: spin 1s linear infinite;
+}
+
+.translate-btn.loading .spinner {
+  border-color: #6b7280;
+  border-top-color: transparent;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+.language-toggle {
+  display: flex;
+  gap: 10px;
+  margin-bottom: 15px;
+}
+
+.language-toggle button {
+  padding: 8px 16px;
+  border: 1px solid #d1d5db;
+  background: white;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.language-toggle button.active {
+  background: #10b981;
+  color: white;
+  border-color: #10b981;
+}
+
+.language-toggle button:disabled {
+  background: #f3f4f6;
+  color: #9ca3af;
+  cursor: not-allowed;
+  border-color: #d1d5db;
+}
+
+.translated-content {
+  direction: ltr; /* Default left-to-right */
+}
+
+.translated-content:lang(ur) {
+  direction: rtl; /* Right-to-left for Urdu */
+  text-align: right;
+}
+
+/* Basic styling to handle Arabic/Urdu text */
+.arabic-text, .urdu-text {
+  direction: rtl;
+  text-align: right;
+  font-family: 'Tahoma', 'Arial Unicode MS', sans-serif;
+}
