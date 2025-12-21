@@ -5,7 +5,7 @@ const path = require('path');
 module.exports = {
   title: 'Physical AI & Humanoid Robotics Book',
   tagline: 'Exploring AI in the physical world',
-  url: 'https://your-docusaurus-site.com',
+  url: 'https://spec-driven-hackathon.vercel.app/',
   baseUrl: '/',
   onBrokenLinks: 'throw',
   onBrokenMarkdownLinks: 'warn',
@@ -58,7 +58,7 @@ module.exports = {
       items: [
         {to: '/blog', label: 'Blog', position: 'left'},
         {
-          href: 'https://github.com/your-org/physical-ai-robots',
+          href: 'https://github.com/Muhammad-Faizans/Spec-driven-hackathon',
           label: 'GitHub',
           position: 'right',
         },
@@ -103,7 +103,7 @@ module.exports = {
             },
             {
               label: 'GitHub',
-              href: 'https://github.com/your-org/physical-ai-robots'
+              href: 'https://github.com/Muhammad-Faizans/Spec-driven-hackathon'
             },
           ],
         },
@@ -116,3 +116,4 @@ module.exports = {
     },
   },
 };
+
