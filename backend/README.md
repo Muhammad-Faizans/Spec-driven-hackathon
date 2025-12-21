@@ -1,43 +1,61 @@
-# Backend README
+# Backend for AI Assistant - Railway Deployment
 
-This is the README for the RAG Chatbot backend service.
+This is the backend for the AI Assistant application, designed for deployment on Railway.
 
-## Setup
+## Features
 
-1.  **Prerequisites**:
-    -   Python 3.11+ installed
-    -   `requirements.txt` file with all necessary dependencies
-    -   Environment variables configured (`OPENAI_API_KEY`, `QDRANT_API_KEY`, `QDRANT_HOST`, `DATABASE_URL`)
+- FastAPI-based REST API
+- Integration with Qdrant vector database
+- Support for Gemini and Cohere AI models
+- Automatic document ingestion
+- CORS configured for Vercel frontend
 
-2.  **Installation**:
-    ```bash
-    pip install -r requirements.txt
-    ```
+## Environment Variables Required
 
-3.  **Database Setup**:
-    *(Assuming Alembic is used for migrations)*
-    ```bash
-    alembic upgrade head
-    ```
-    *(If not using Alembic, refer to `backend/src/database.py` for connection details and manual setup if needed)*
+The following environment variables must be set for the application to run:
 
-4.  **Running the Server**:
-    ```bash
-    uvicorn backend.src.main:app --reload
-    ```
-
-## Usage
-
--   The API provides two main endpoints:
-    -   `POST /query/general`: For general questions about the book.
-    -   `POST /query/selected-text`: For questions about specific text selections.
-
-## Data Ingestion
-
-To populate the database and vector store, run the ingestion script:
-
-```bash
-python scripts/ingest_data.py
+```
+GEMINI_API_KEY=your_google_gemini_api_key
+COHERE_API_KEY=your_cohere_api_key
+QDRANT_URL=your_qdrant_cluster_url
+QDRANT_API_KEY=your_qdrant_api_key
 ```
 
-*Note: Ensure your Docusaurus build output is accessible at the path specified in `scripts/ingest_data.py` or modify the script to point to the correct location.*
+Optional environment variables:
+```
+COLLECTION_NAME=curriculum_chunks (default)
+CHUNK_MAX_CHARS=1200 (default)
+SEARCH_TOP_K=5 (default)
+MAX_TOKENS_RESPONSE=500 (default)
+TEMPERATURE=0.3 (default)
+```
+
+## Health Check Endpoint
+
+The application provides a health check endpoint:
+- GET `/health` - Returns the health status of the service
+
+Response format:
+```json
+{
+  "status": "ok",
+  "service": "railway-backend",
+  "errors": false
+}
+```
+
+## API Endpoints
+
+- GET `/` - Root endpoint
+- GET `/health` - Health check
+- POST `/chat` - Chat endpoint
+- POST `/admin/ingest` - Manual document ingestion
+- GET `/admin/status` - Status of the Qdrant collection
+- GET `/debug/docs` - Debug endpoint for docs directory
+
+## Railway Deployment Notes
+
+- The application listens on the port specified by the `PORT` environment variable
+- CORS is configured to allow requests from `https://*.vercel.app`
+- The startup process includes automatic document ingestion if the Qdrant collection is empty
+- The application is built using the provided Dockerfile
